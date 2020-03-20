@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NetModular.Lib.Data.Core" Version="1.8.1" />
+    <PackageReference Include="NetModular.Lib.Data.Query" Version="1.8.1" />
+    <PackageReference Include="NetModular.Lib.Utils.Core" Version="1.8.2" />
+  </ItemGroup>
+
+</Project>
+
