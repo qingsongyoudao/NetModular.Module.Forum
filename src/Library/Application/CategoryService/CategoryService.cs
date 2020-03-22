@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using NetModular.Lib.Cache.Abstractions;
+using NetModular.Lib.Utils.Core.Models;
 using NetModular.Lib.Utils.Core.Result;
 using NetModular.Module.Forum.Application.CategoryService.ResultModels;
 using NetModular.Module.Forum.Application.CategoryService.ViewModels;
 using NetModular.Module.Forum.Domain.Category;
 using NetModular.Module.Forum.Domain.Category.Models;
 using NetModular.Module.Forum.Infrastructure;
+using NetModular.Module.Forum.Infrastructure.Repositories;
 
 namespace NetModular.Module.Forum.Application.CategoryService
 {
@@ -18,11 +20,16 @@ namespace NetModular.Module.Forum.Application.CategoryService
         private readonly IMapper _mapper;
         private readonly ICategoryRepository _repository;
         private readonly ICacheHandler _cacheHandler;
-        public CategoryService(IMapper mapper, ICategoryRepository repository, ICacheHandler cacheHandler)
+        private readonly ForumDbContext _dbContext;
+        public CategoryService(IMapper mapper, 
+            ICategoryRepository repository,
+            ForumDbContext dbContext,
+            ICacheHandler cacheHandler)
         {
             _mapper = mapper;
             _cacheHandler = cacheHandler;
             _repository = repository;
+            _dbContext = dbContext;
         }
 
         public async Task<IResultModel> Query(CategoryQueryModel model)
@@ -98,5 +105,49 @@ namespace NetModular.Module.Forum.Application.CategoryService
             return ResultModel.Success(list);
         }
 
+
+        #region 排序
+        public async Task<IResultModel> QuerySortList(long? parentId)
+        {
+            var model = new SortUpdateModel<long>();
+            var all = await _repository.GetAllAsync();
+            model.Options = all.Select(m => new SortOptionModel<long>()
+            {
+                Id = m.Id,
+                Label = m.Name,
+                Sort = m.Sort
+            }).ToList();
+
+            return ResultModel.Success(model);
+        }
+
+        public async Task<IResultModel> UpdateSortList(SortUpdateModel<long> model)
+        {
+            if (model.Options == null || !model.Options.Any())
+            {
+                return ResultModel.Failed("不包含数据");
+            }
+
+            using (var uow = _dbContext.NewUnitOfWork())
+            {
+                foreach (var option in model.Options)
+                {
+                    var entity = await _repository.GetAsync(option.Id, uow);
+                    if (entity == null)
+                    {
+                        return ResultModel.Failed();
+                    }
+                    entity.Sort = option.Sort;
+                    if (!await _repository.UpdateAsync(entity, uow))
+                    {
+                        return ResultModel.Failed();
+                    }
+                }
+                uow.Commit();
+            }
+
+            return ResultModel.Success();
+        }
+        #endregion
     }
 }

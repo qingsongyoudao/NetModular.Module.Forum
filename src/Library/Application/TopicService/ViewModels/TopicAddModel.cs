@@ -69,5 +69,9 @@ namespace NetModular.Module.Forum.Application.TopicService.ViewModels
         /// </summary>
         public string CreatedIP { get; set; }
 
+        /// <summary>
+        /// 标签列表
+        /// </summary>
+        public int[] Tags { get; set; }
     }
 }

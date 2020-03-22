@@ -17,6 +17,23 @@ namespace NetModular.Module.Forum.Infrastructure.Repositories.SqlServer
         public TopicTagRepository(IDbContext context) : base(context)
         {
         }
+        public async Task<bool> DeleteByTopicId(int topicId, IUnitOfWork uow = null)
+        {
+            if (uow == null)
+            {
+                return await Db.Find(m => m.TopicId == topicId).DeleteAsync();
+            }
+            return await Db.Find(m => m.TopicId == topicId).UseUow(uow).DeleteAsync();
+        }
+
+        public async Task<bool> DeleteByTagId(int tagId, IUnitOfWork uow = null)
+        {
+            if (uow == null)
+            {
+                return await Db.Find(m => m.TagId == tagId).DeleteAsync();
+            }
+            return await Db.Find(m => m.TagId == tagId).UseUow(uow).DeleteAsync();
+        }
 
         public async Task<IList<TopicTagEntity>> Query(TopicTagQueryModel model)
         {

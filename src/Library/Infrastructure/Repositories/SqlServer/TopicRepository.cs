@@ -32,6 +32,7 @@ namespace NetModular.Module.Forum.Infrastructure.Repositories.SqlServer
             {
                 joinQuery.OrderByDescending((t1, t2, t3) => t1.Id);
             }
+
             joinQuery.Select((t1, t2, t3) => new
             {
                 t1,

@@ -1,6 +1,6 @@
 <template>
   <nm-container>
-    <nm-list ref="list" v-bind="list">
+    <nm-list ref="list" v-bind="list" :show-overflow-tooltip="true">
       <!--查询条件-->
       <template v-slot:querybar>
         <el-form-item label="标题：" prop="title">

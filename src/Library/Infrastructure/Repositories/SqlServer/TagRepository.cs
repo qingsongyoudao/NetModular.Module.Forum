@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using NetModular.Lib.Data.Abstractions;
+using NetModular.Lib.Data.Abstractions.Entities;
 using NetModular.Lib.Data.Core;
 using NetModular.Lib.Data.Query;
 using NetModular.Module.Forum.Domain.Tag;
@@ -13,6 +14,20 @@ namespace NetModular.Module.Forum.Infrastructure.Repositories.SqlServer
     {
         public TagRepository(IDbContext context) : base(context)
         {
+        }
+
+        public async Task<int> AddCount(int[] tagIds, IUnitOfWork uow = null)
+        {
+            string tagDatabaseName = EntityDescriptorCollection.Get<TagEntity>().Database;
+            string addCountSql = $"update {tagDatabaseName}tag set Count=Count+1 where id in ({string.Join(",", tagIds)})";
+            return await Db.ExecuteAsync(addCountSql, uow);
+        }
+
+        public async Task<int> RecalculationCount(int[] tagIds, IUnitOfWork uow = null)
+        {
+            string tagDatabaseName = EntityDescriptorCollection.Get<TagEntity>().Database;
+            string addCountSql = $"update {tagDatabaseName}tag as t1 set t1.Count=(select count(1) from topic_Tag as t2 where t2.tagId=t1.id) where t1.id in ({string.Join(",", tagIds)})";
+            return await Db.ExecuteAsync(addCountSql, uow);
         }
 
         public async Task<IList<TagEntity>> Query(TagQueryModel model)

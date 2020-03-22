@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using NetModular.Lib.Auth.Web.Attributes;
 using NetModular.Lib.Utils.Core.Result;
 using NetModular.Module.Forum.Application.TagService;
 using NetModular.Module.Forum.Application.TagService.ViewModels;
@@ -54,5 +55,15 @@ namespace NetModular.Module.Forum.Web.Controllers
         {
             return _service.Update(model);
         }
+
+        [Common]
+        [HttpGet]
+        [Description("选择")]
+        public Task<IResultModel> Select()
+        {
+            return _service.Select();
+        }
+
+
     }
 }

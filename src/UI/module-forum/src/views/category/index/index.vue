@@ -6,14 +6,12 @@
         <el-form-item label="名称：" prop="name">
           <el-input v-model="list.model.name" clearable />
         </el-form-item>
-        <el-form-item label="主题数量：" prop="count">
-          <el-input v-model="list.model.count" clearable />
-        </el-form-item>
       </template>
 
       <!--按钮-->
       <template v-slot:querybar-buttons>
         <nm-button-has :options="buttons.add" @click="add" />
+        <nm-button v-bind="buttons.sort" @click="openSort" />
       </template>
 
       <!--自定义列-->
@@ -29,6 +27,8 @@
     </nm-list>
 
     <save-page :id="curr.id" :visible.sync="dialog.save" @success="refresh" />
+    <!--排序-->
+    <nm-drag-sort-dialog v-bind="dragSort" :visible.sync="dialog.sort" @success="onSort" />
   </nm-container>
 </template>
 <script>
@@ -51,13 +51,34 @@ export default {
         action: api.query,
         model: {
           /** 名称 */
-          name: '',
-          /** 主题数量 */
-          count: ''
+          name: ''
         }
       },
       removeAction: api.remove,
-      buttons: page.buttons
+      buttons: page.buttons,
+      // 弹出框
+      dialog: {
+        sort: false
+      }
+    }
+  },
+  computed: {
+    dragSort() {
+      return {
+        queryAction: this.querySortList,
+        updateAction: api.updateSortList
+      }
+    }
+  },
+  methods: {
+    openSort() {
+      this.dialog.sort = true
+    },
+    querySortList() {
+      return api.querySortList(0)
+    },
+    onSort() {
+      this.refresh()
     }
   }
 }

@@ -30,6 +30,13 @@ const page = new (function() {
       icon: 'delete',
       code: `${this.name}_del`,
       permissions: [`${this.name}_delete_delete`]
+    },
+    sort: {
+      text: '排序',
+      icon: 'sort',
+      type: 'warning',
+      code: `${this.name}_sort`,
+      permissions: [`${this.name}_sort_get`, `${this.name}_sort_post`]
     }
   }
 })()

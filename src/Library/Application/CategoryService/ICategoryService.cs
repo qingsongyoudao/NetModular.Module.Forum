@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using NetModular.Lib.Utils.Core.Models;
 using NetModular.Lib.Utils.Core.Result;
 using NetModular.Module.Forum.Application.CategoryService.ViewModels;
 using NetModular.Module.Forum.Domain.Category.Models;
@@ -47,5 +48,20 @@ namespace NetModular.Module.Forum.Application.CategoryService
         Task<IResultModel> Update(CategoryUpdateModel model);
 
         Task<IResultModel> Select();
+
+
+        /// <summary>
+        /// 查询排序列表
+        /// </summary>
+        /// <param name="parentId">父节点</param>
+        /// <returns></returns>
+        Task<IResultModel> QuerySortList(long? parentId);
+
+        /// <summary>
+        /// 更新排序信息
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        Task<IResultModel> UpdateSortList(SortUpdateModel<long> model);
     }
 }

@@ -34,7 +34,7 @@ namespace NetModular.Module.Forum.Application.TagService
             var entity = _mapper.Map<TagEntity>(model);
             //if (await _repository.Exists(entity))
             //{
-                //return ResultModel.HasExists;
+            //return ResultModel.HasExists;
             //}
 
             var result = await _repository.AddAsync(entity);
@@ -67,12 +67,25 @@ namespace NetModular.Module.Forum.Application.TagService
 
             //if (await _repository.Exists(entity))
             //{
-                //return ResultModel.HasExists;
+            //return ResultModel.HasExists;
             //}
 
             var result = await _repository.UpdateAsync(entity);
 
             return ResultModel.Result(result);
+        }
+
+
+        public async Task<IResultModel> Select()
+        {
+            var all = await _repository.GetAllAsync();
+            var list = all.Select(m => new OptionResultModel
+            {
+                Label = m.Name,
+                Value = m.Id
+            }).ToList();
+
+            return ResultModel.Success(list);
         }
     }
 }

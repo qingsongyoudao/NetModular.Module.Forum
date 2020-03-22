@@ -5,8 +5,11 @@
         <el-form-item label="名称：" prop="name">
           <el-input v-model="form.model.name" clearable />
         </el-form-item>
-        <el-form-item label="主题数量：" prop="count">
+        <!-- <el-form-item label="主题数量：" prop="count">
           <el-input v-model="form.model.count" clearable />
+        </el-form-item> -->
+        <el-form-item label="序号：" prop="count">
+          <el-input v-model="form.model.sort" clearable />
         </el-form-item>
       </el-col>
     </el-row>
@@ -28,7 +31,8 @@ export default {
           /** 名称 */
           name: '',
           /** 主题数量 */
-          count: ''
+          count: 0,
+          sort: 0
         },
         rules: {}
       }

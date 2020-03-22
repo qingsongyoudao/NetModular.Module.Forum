@@ -2,7 +2,7 @@ const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const isDev = process.env.NODE_ENV === 'development' // 开发环境
-
+const webpack = require('webpack')
 // 增加环境变量
 process.env.VUE_APP_COPYRIGHT = '版权所有：尼古拉斯·老李'
 process.env.VUE_APP_BUILD_TIME = require('dayjs')().format('YYYYMDHHmmss')
@@ -28,7 +28,12 @@ module.exports = {
             to: path.join(__dirname, outputDir),
             ignore: ['index.html']
           }
-        ])
+        ]),
+
+        new webpack.ProvidePlugin({
+          'window.Quill': 'quill/dist/quill.js',
+          Quill: 'quill/dist/quill.js'
+        })
       ]
     }
 
@@ -79,7 +84,6 @@ module.exports = {
       )
       // 非开发环境
       .when(!isDev, config => {
-
         // 拆分
         config.optimization.splitChunks({
           chunks: 'all',

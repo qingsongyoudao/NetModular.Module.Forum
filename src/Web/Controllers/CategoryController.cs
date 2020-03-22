@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using NetModular.Lib.Auth.Web.Attributes;
+using NetModular.Lib.Utils.Core.Models;
 using NetModular.Lib.Utils.Core.Result;
 using NetModular.Module.Forum.Application.CategoryService;
 using NetModular.Module.Forum.Application.CategoryService.ViewModels;
@@ -63,5 +64,23 @@ namespace NetModular.Module.Forum.Web.Controllers
         {
             return _service.Select();
         }
+
+
+        #region 排序
+
+        [HttpGet]
+        [Description("获取排序信息")]
+        public Task<IResultModel> Sort(long? parentId)
+        {
+            return _service.QuerySortList(parentId);
+        }
+
+        [HttpPost]
+        [Description("更新排序信息")]
+        public Task<IResultModel> Sort(SortUpdateModel<long> model)
+        {
+            return _service.UpdateSortList(model);
+        }
+        #endregion
     }
 }

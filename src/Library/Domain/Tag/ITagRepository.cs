@@ -17,5 +17,21 @@ namespace NetModular.Module.Forum.Domain.Tag
         /// <param name="model"></param>
         /// <returns></returns>
         Task<IList<TagEntity>> Query(TagQueryModel model);
+
+        /// <summary>
+        /// 增加统计值
+        /// </summary>
+        /// <param name="tagIds"></param>
+        /// <param name="uow"></param>
+        /// <returns></returns>
+        Task<int> AddCount(int[] tagIds, IUnitOfWork uow = null);
+
+        /// <summary>
+        /// 重新计算
+        /// </summary>
+        /// <param name="tagIds"></param>
+        /// <param name="uow"></param>
+        /// <returns></returns>
+        Task<int> RecalculationCount(int[] tagIds, IUnitOfWork uow = null);
     }
 }

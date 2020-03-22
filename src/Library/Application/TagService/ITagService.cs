@@ -46,5 +46,6 @@ namespace NetModular.Module.Forum.Application.TagService
         /// <returns></returns>
         Task<IResultModel> Update(TagUpdateModel model);
 
+        Task<IResultModel> Select();
     }
 }
