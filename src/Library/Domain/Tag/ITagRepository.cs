@@ -24,7 +24,7 @@ namespace NetModular.Module.Forum.Domain.Tag
         /// <param name="tagIds"></param>
         /// <param name="uow"></param>
         /// <returns></returns>
-        Task<int> AddCount(int[] tagIds, IUnitOfWork uow = null);
+        Task<bool> AddCount(int[] tagIds, bool isAdd, IUnitOfWork uow = null);
 
         /// <summary>
         /// 重新计算

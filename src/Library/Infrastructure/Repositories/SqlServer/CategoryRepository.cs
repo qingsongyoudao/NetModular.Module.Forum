@@ -16,11 +16,24 @@ namespace NetModular.Module.Forum.Infrastructure.Repositories.SqlServer
         {
         }
 
-        public async Task<int> AddCount(int[] categoryIds, IUnitOfWork uow = null)
+        public async Task<bool> AddCount(int[] categoryIds, bool isAddCount, IUnitOfWork uow = null)
         {
-            string databaseName = EntityDescriptorCollection.Get<CategoryEntity>().Database;
-            string addCountSql = $"update {databaseName}category set Count=Count+1 where id in ({string.Join(",", categoryIds)})";
-            return await Db.ExecuteAsync(addCountSql, uow);
+            var list = await Db.Find(f => categoryIds.Contains(f.Id)).ToListAsync();
+            foreach (var item in list)
+            {
+                if (isAddCount) item.Count++;
+                else
+                {
+                    item.Count--;
+                    item.Count = item.Count < 0 ? 0 : item.Count;
+                }
+                await Db.UpdateAsync(item, uow);
+            }
+            return true;
+
+            //string databaseName = EntityDescriptorCollection.Get<CategoryEntity>().Database;
+            //string addCountSql = $"update {databaseName}category set Count=Count+1 where id in ({string.Join(",", categoryIds)})";
+            //return await Db.ExecuteAsync(addCountSql, uow);
         }
 
 

@@ -23,7 +23,7 @@ namespace NetModular.Module.Forum.Domain.Category
         /// <param name="categoryIds"></param>
         /// <param name="uow"></param>
         /// <returns></returns>
-        Task<int> AddCount(int[] categoryIds, IUnitOfWork uow = null);
+        Task<bool> AddCount(int[] categoryIds, bool isAddCount, IUnitOfWork uow = null);
 
         /// <summary>
         /// 重新计算

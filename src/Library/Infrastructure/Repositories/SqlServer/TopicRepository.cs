@@ -41,6 +41,7 @@ namespace NetModular.Module.Forum.Infrastructure.Repositories.SqlServer
                 t2.Sex,
                 CategoryName = t3.Name
             });
+
             var result = await query.PaginationAsync(paging);
 
             model.TotalCount = paging.TotalCount;

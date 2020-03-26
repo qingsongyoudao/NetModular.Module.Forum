@@ -64,12 +64,12 @@ namespace NetModular.Module.Forum.Application.TopicService
                     TagId = s
                 }).ToList();
 
-                //ĞÂÔöÖ»ĞèÒªÖØĞÂÌí¼Ó¼´¿É ÏûÏ¢¶ÓÁĞ´¦Àí
+                //æ–°å¢åªéœ€è¦é‡æ–°æ·»åŠ å³å¯ æ¶ˆæ¯é˜Ÿåˆ—å¤„ç†
                 await _topicTagRepository.AddAsync(tagList, uow);
                 uow.Commit();
 
-                await _tagRepository.AddCount(model.Tags);
-                await _categoryRepository.AddCount(new int[] { entity.CategoryId });
+                if (model.Tags.Count() > 0) await _tagRepository.AddCount(model.Tags, true);
+                await _categoryRepository.AddCount(new int[] { entity.CategoryId }, true);
             }
             return ResultModel.Result(result);
         }
@@ -100,7 +100,7 @@ namespace NetModular.Module.Forum.Application.TopicService
             if (entity == null)
                 return ResultModel.NotExists;
 
-            //»ñÈ¡Ô­Öµ
+            //è·å–åŸå€¼
             int originCategory = entity.CategoryId;
             var topicTags = await _topicTagRepository.Query(new Domain.TopicTag.Models.TopicTagQueryModel
             {
@@ -113,7 +113,7 @@ namespace NetModular.Module.Forum.Application.TopicService
             var result = await _repository.UpdateAsync(entity, uow);
             if (result && model.Tags != null && model.Tags.Count() > 0)
             {
-                //É¾³ıÔ­¹ØÏµ
+                //åˆ é™¤åŸå…³ç³»
                 await _topicTagRepository.DeleteByTopicId(entity.Id, uow);
                 var tagList = model.Tags.Select(s => new TopicTagEntity
                 {
@@ -124,29 +124,26 @@ namespace NetModular.Module.Forum.Application.TopicService
             }
             uow.Commit();
 
-            #region ÅĞ¶ÏÄÄĞ©±êÇ©ĞèÒªÖØĞÂ¼ÆËã £¨ÕâÀïĞèÒªÏûÏ¢¶ÓÁĞ´¦Àí£©
-            
+            #region åˆ¤æ–­å“ªäº›æ ‡ç­¾éœ€è¦é‡æ–°è®¡ç®— ï¼ˆè¿™é‡Œéœ€è¦æ¶ˆæ¯é˜Ÿåˆ—å¤„ç†ï¼‰
+
+            //ç¼–è¾‘å‰
             var originTags = topicTags.Select(s => s.TagId).ToArray();
-            //²¢¼¯È¥ÖØ
-            var recalcTags = originTags.Union(model.Tags).Distinct();
-            //²î¼¯
-            var exceptR = originTags.Except(recalcTags.ToArray());
-            var exceptL = recalcTags.Except(originTags.ToArray());
-            //Èç¹û²î¼¯Îª0£¬ÔòÎŞĞèÖØĞÂ¼ÆËã
+            //åˆ é™¤çš„
+            var exceptR = originTags.Except(model.Tags);
+            //æ–°å¢çš„
+            var exceptL = model.Tags.Except(originTags);
+            //å¦‚æœå·®é›†ä¸º0ï¼Œåˆ™æ— éœ€é‡æ–°è®¡ç®—
             if (exceptR.Count() > 0 || exceptL.Count() > 0)
             {
-                //ÖØĞÂ¼ÆËã±êÇ©Í³¼Æ
-                await _tagRepository.RecalculationCount(recalcTags.ToArray(), uow);
+                if (exceptR.Count() > 0) await _tagRepository.AddCount(exceptR.ToArray(), false);
+                if (exceptL.Count() > 0) await _tagRepository.AddCount(exceptL.ToArray(), true);
             }
             #endregion
-            #region ÅĞ¶ÏÄÄĞ©·ÖÀàĞèÒªÖØĞÂ¼ÆËã £¨ÕâÀïĞèÒªÏûÏ¢¶ÓÁĞ´¦Àí£©
+            #region åˆ¤æ–­å“ªäº›åˆ†ç±»éœ€è¦é‡æ–°è®¡ç®— ï¼ˆè¿™é‡Œéœ€è¦æ¶ˆæ¯é˜Ÿåˆ—å¤„ç†ï¼‰
             if (originCategory != entity.CategoryId)
             {
-                //ÖØĞÂ¼ÆËã·ÖÀàÍ³¼Æ
-                await _categoryRepository.RecalculationCount(new int[] {
-                        model.CategoryId,
-                        originCategory
-                    }, uow);
+                await _categoryRepository.AddCount(new int[] { entity.CategoryId }, true);
+                await _categoryRepository.AddCount(new int[] { originCategory }, false);
             }
             #endregion
 
