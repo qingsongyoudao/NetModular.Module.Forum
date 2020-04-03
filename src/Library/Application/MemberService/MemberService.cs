@@ -3,25 +3,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using NetModular.Lib.Utils.Core.Result;
-using NetModular.Module.Forum.Application.UserService.ViewModels;
-using NetModular.Module.Forum.Domain.User;
-using NetModular.Module.Forum.Domain.User.Models;
+using NetModular.Module.Forum.Application.MemberService.ViewModels;
+using NetModular.Module.Forum.Domain.Member;
+using NetModular.Module.Forum.Domain.Member.Models;
 
-namespace NetModular.Module.Forum.Application.UserService
+namespace NetModular.Module.Forum.Application.MemberService
 {
-    public class UserService : IUserService
+    public class MemberService : IMemberService
     {
         private readonly IMapper _mapper;
-        private readonly IUserRepository _repository;
-        public UserService(IMapper mapper, IUserRepository repository)
+        private readonly IMemberRepository _repository;
+        public MemberService(IMapper mapper, IMemberRepository repository)
         {
             _mapper = mapper;
             _repository = repository;
         }
 
-        public async Task<IResultModel> Query(UserQueryModel model)
+        public async Task<IResultModel> Query(MemberQueryModel model)
         {
-            var result = new QueryResultModel<UserEntity>
+            var result = new QueryResultModel<MemberEntity>
             {
                 Rows = await _repository.Query(model),
                 Total = model.TotalCount
@@ -29,9 +29,9 @@ namespace NetModular.Module.Forum.Application.UserService
             return ResultModel.Success(result);
         }
 
-        public async Task<IResultModel> Add(UserAddModel model)
+        public async Task<IResultModel> Add(MemberAddModel model)
         {
-            var entity = _mapper.Map<UserEntity>(model);
+            var entity = _mapper.Map<MemberEntity>(model);
             //if (await _repository.Exists(entity))
             //{
                 //return ResultModel.HasExists;
@@ -53,11 +53,11 @@ namespace NetModular.Module.Forum.Application.UserService
             if (entity == null)
                 return ResultModel.NotExists;
 
-            var model = _mapper.Map<UserUpdateModel>(entity);
+            var model = _mapper.Map<MemberUpdateModel>(entity);
             return ResultModel.Success(model);
         }
 
-        public async Task<IResultModel> Update(UserUpdateModel model)
+        public async Task<IResultModel> Update(MemberUpdateModel model)
         {
             var entity = await _repository.GetAsync(model.Id);
             if (entity == null)

@@ -47,8 +47,11 @@ namespace NetModular.Module.Forum.Application.CategoryService
         /// <returns></returns>
         Task<IResultModel> Update(CategoryUpdateModel model);
 
+        /// <summary>
+        /// 下拉框选择数据
+        /// </summary>
+        /// <returns></returns>
         Task<IResultModel> Select();
-
 
         /// <summary>
         /// 查询排序列表
@@ -63,5 +66,13 @@ namespace NetModular.Module.Forum.Application.CategoryService
         /// <param name="model"></param>
         /// <returns></returns>
         Task<IResultModel> UpdateSortList(SortUpdateModel<long> model);
+
+
+        /// <summary>
+        /// 查
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
+        Task<IResultModel> GetList();
     }
 }

@@ -7,8 +7,8 @@ using NetModular.Lib.Data.Query;
 using NetModular.Lib.Utils.Core.Extensions;
 using NetModular.Module.Forum.Domain.Mark;
 using NetModular.Module.Forum.Domain.Mark.Models;
+using NetModular.Module.Forum.Domain.Member;
 using NetModular.Module.Forum.Domain.Topic;
-using NetModular.Module.Forum.Domain.User;
 
 namespace NetModular.Module.Forum.Infrastructure.Repositories.SqlServer
 {
@@ -29,7 +29,7 @@ namespace NetModular.Module.Forum.Infrastructure.Repositories.SqlServer
 
             var query = Db.Find();
             var joinQuery = query.LeftJoin<TopicEntity>((t1, t2) => t1.TopicId == t2.Id)
-                .LeftJoin<UserEntity>((t1, t2, t3) => t1.UserId == t3.Id);
+                .LeftJoin<MemberEntity>((t1, t2, t3) => t1.UserId == t3.Id);
 
             joinQuery.Where((t1, t2, t3) => t1.TopicId == model.TopicId);
             joinQuery.WhereNotNull(model.Type, (t1, t2, t3) => t1.Type == model.Type);

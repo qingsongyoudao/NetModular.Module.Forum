@@ -1,13 +1,12 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using NetModular.Module.Forum.Domain.User;
 
-namespace NetModular.Module.Forum.Application.UserService.ViewModels
+namespace NetModular.Module.Forum.Application.MemberService.ViewModels
 {
     /// <summary>
     /// 用户信息添加模型
     /// </summary>
-    public class UserAddModel
+    public class MemberAddModel
     {
         /// <summary>
         /// 昵称

@@ -61,5 +61,11 @@ namespace NetModular.Module.Forum.Infrastructure.Repositories.SqlServer
 
             return result;
         }
+
+
+        public async Task<IList<CategoryEntity>> GetList()
+        {
+            return await Db.Find().OrderBy(o => o.Sort).ToListAsync();
+        }
     }
 }

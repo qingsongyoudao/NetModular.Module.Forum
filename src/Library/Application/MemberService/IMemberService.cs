@@ -1,29 +1,29 @@
 using System;
 using System.Threading.Tasks;
 using NetModular.Lib.Utils.Core.Result;
-using NetModular.Module.Forum.Application.UserService.ViewModels;
-using NetModular.Module.Forum.Domain.User.Models;
+using NetModular.Module.Forum.Application.MemberService.ViewModels;
+using NetModular.Module.Forum.Domain.Member.Models;
 
-namespace NetModular.Module.Forum.Application.UserService
+namespace NetModular.Module.Forum.Application.MemberService
 {
     /// <summary>
     /// 用户信息服务
     /// </summary>
-    public interface IUserService
+    public interface IMemberService
     {
         /// <summary>
         /// 查询
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<IResultModel> Query(UserQueryModel model);
+        Task<IResultModel> Query(MemberQueryModel model);
 
         /// <summary>
         /// 创建
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<IResultModel> Add(UserAddModel model);
+        Task<IResultModel> Add(MemberAddModel model);
 
         /// <summary>
         /// 删除
@@ -44,7 +44,7 @@ namespace NetModular.Module.Forum.Application.UserService
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<IResultModel> Update(UserUpdateModel model);
+        Task<IResultModel> Update(MemberUpdateModel model);
 
     }
 }

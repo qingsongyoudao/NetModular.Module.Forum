@@ -21,6 +21,7 @@ namespace NetModular.Module.Forum.Domain.Category
         /// 增加统计值
         /// </summary>
         /// <param name="categoryIds"></param>
+        /// <param name="isAddCount">是否累加</param>
         /// <param name="uow"></param>
         /// <returns></returns>
         Task<bool> AddCount(int[] categoryIds, bool isAddCount, IUnitOfWork uow = null);
@@ -32,5 +33,11 @@ namespace NetModular.Module.Forum.Domain.Category
         /// <param name="uow"></param>
         /// <returns></returns>
         Task<int> RecalculationCount(int[] categoryIds, IUnitOfWork uow = null);
+
+        /// <summary>
+        /// 获取所有分类数据
+        /// </summary>
+        /// <returns></returns>
+        Task<IList<CategoryEntity>> GetList();
     }
 }

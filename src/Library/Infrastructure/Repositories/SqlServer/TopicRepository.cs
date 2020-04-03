@@ -5,9 +5,9 @@ using NetModular.Lib.Data.Abstractions;
 using NetModular.Lib.Data.Core;
 using NetModular.Lib.Data.Query;
 using NetModular.Module.Forum.Domain.Category;
+using NetModular.Module.Forum.Domain.Member;
 using NetModular.Module.Forum.Domain.Topic;
 using NetModular.Module.Forum.Domain.Topic.Models;
-using NetModular.Module.Forum.Domain.User;
 
 namespace NetModular.Module.Forum.Infrastructure.Repositories.SqlServer
 {
@@ -23,7 +23,7 @@ namespace NetModular.Module.Forum.Infrastructure.Repositories.SqlServer
 
             var query = Db.Find();
 
-            var joinQuery = query.LeftJoin<UserEntity>((t1, t2) => t1.UserId == t2.Id)
+            var joinQuery = query.LeftJoin<MemberEntity>((t1, t2) => t1.UserId == t2.Id)
                 .LeftJoin<CategoryEntity>((t1, t2, t3) => t1.CategoryId == t3.Id);
 
             joinQuery.WhereNotNull(model.UserId, (t1, t2, t3) => t1.UserId == model.UserId);

@@ -21,7 +21,7 @@ namespace NetModular.Module.Forum.Application.CategoryService
         private readonly ICategoryRepository _repository;
         private readonly ICacheHandler _cacheHandler;
         private readonly ForumDbContext _dbContext;
-        public CategoryService(IMapper mapper, 
+        public CategoryService(IMapper mapper,
             ICategoryRepository repository,
             ForumDbContext dbContext,
             ICacheHandler cacheHandler)
@@ -149,5 +149,21 @@ namespace NetModular.Module.Forum.Application.CategoryService
             return ResultModel.Success();
         }
         #endregion
+
+        #region App端接口方法
+        /// <summary>
+        /// 获取所有分类数据
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
+        public async Task<IResultModel> GetList()
+        {
+            var result = new QueryResultModel<CategoryEntity>
+            {
+                Rows = await _repository.GetList()
+            };
+            return ResultModel.Success(result);
+        }
+        #endregion 
     }
 }

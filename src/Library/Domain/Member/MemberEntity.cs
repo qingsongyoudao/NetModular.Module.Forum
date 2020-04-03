@@ -2,13 +2,13 @@ using System;
 using NetModular.Lib.Data.Abstractions.Attributes;
 using NetModular.Lib.Data.Core.Entities;
 
-namespace NetModular.Module.Forum.Domain.User
+namespace NetModular.Module.Forum.Domain.Member
 {
     /// <summary>
     /// 用户信息
     /// </summary>
-    [Table("User")]
-    public partial class UserEntity : Entity<int>
+    [Table("Member")]
+    public partial class MemberEntity : Entity<int>
     {
         /// <summary>
         /// 昵称

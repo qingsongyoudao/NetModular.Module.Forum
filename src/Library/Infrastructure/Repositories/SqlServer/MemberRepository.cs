@@ -4,18 +4,18 @@ using System.Threading.Tasks;
 using NetModular.Lib.Data.Abstractions;
 using NetModular.Lib.Data.Core;
 using NetModular.Lib.Data.Query;
-using NetModular.Module.Forum.Domain.User;
-using NetModular.Module.Forum.Domain.User.Models;
+using NetModular.Module.Forum.Domain.Member;
+using NetModular.Module.Forum.Domain.Member.Models;
 
 namespace NetModular.Module.Forum.Infrastructure.Repositories.SqlServer
 {
-    public class UserRepository : RepositoryAbstract<UserEntity>, IUserRepository
+    public class MemberRepository : RepositoryAbstract<MemberEntity>, IMemberRepository
     {
-        public UserRepository(IDbContext context) : base(context)
+        public MemberRepository(IDbContext context) : base(context)
         {
         }
 
-        public async Task<IList<UserEntity>> Query(UserQueryModel model)
+        public async Task<IList<MemberEntity>> Query(MemberQueryModel model)
         {
             var paging = model.Paging();
 

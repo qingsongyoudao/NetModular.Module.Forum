@@ -2,9 +2,9 @@
 
 namespace NetModular.Module.Forum.Infrastructure.Repositories.PostgreSQL
 {
-    public class UserRepository : SqlServer.UserRepository
+    public class MemberRepository : SqlServer.MemberRepository
     {
-        public UserRepository(IDbContext dbContext) : base(dbContext)
+        public MemberRepository(IDbContext dbContext) : base(dbContext)
         {
         }
     }

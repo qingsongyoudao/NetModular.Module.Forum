@@ -2,20 +2,20 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using NetModular.Lib.Data.Abstractions;
 using NetModular.Lib.Data.Abstractions.Pagination;
-using NetModular.Module.Forum.Domain.User.Models;
+using NetModular.Module.Forum.Domain.Member.Models;
 
-namespace NetModular.Module.Forum.Domain.User
+namespace NetModular.Module.Forum.Domain.Member
 {
     /// <summary>
     /// 用户信息仓储
     /// </summary>
-    public interface IUserRepository : IRepository<UserEntity>
+    public interface IMemberRepository : IRepository<MemberEntity>
     {
         /// <summary>
         /// 查询
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<IList<UserEntity>> Query(UserQueryModel model);
+        Task<IList<MemberEntity>> Query(MemberQueryModel model);
     }
 }

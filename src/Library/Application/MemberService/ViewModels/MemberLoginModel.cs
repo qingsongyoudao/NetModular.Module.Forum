@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace NetModular.Module.Forum.Domain.User.Models
+namespace NetModular.Module.Forum.Application.MemberService.ViewModels
 {
-    public class LoginModel
+    public class MemberLoginModel
     {
         /// <summary>
         /// 用户名
@@ -33,7 +33,8 @@ namespace NetModular.Module.Forum.Domain.User.Models
 
         /// <summary>
         /// 验证码
+        ///  Admin.Application.AuthService.ViewModels.VerifyCodeModel
         /// </summary>
-        public VerifyCodeModel VerifyCode { get; set; }
+        //public Admin.Application.AuthService.ViewModels.VerifyCodeModel VerifyCode { get; set; }
     }
 }

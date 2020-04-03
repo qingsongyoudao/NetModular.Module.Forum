@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace NetModular.Module.Forum.Web.Controllers.App
 {
     [Route("api/v1/[controller]/[action]")]
+    [ApiController]
     public abstract class BaseController : ControllerBase
     {
     }

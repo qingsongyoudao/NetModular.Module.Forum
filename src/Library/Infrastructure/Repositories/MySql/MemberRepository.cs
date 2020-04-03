@@ -2,9 +2,9 @@ using NetModular.Lib.Data.Abstractions;
 
 namespace NetModular.Module.Forum.Infrastructure.Repositories.MySql
 {
-    public class UserRepository : SqlServer.UserRepository
+    public class MemberRepository : SqlServer.MemberRepository
     {
-        public UserRepository(IDbContext dbContext) : base(dbContext)
+        public MemberRepository(IDbContext dbContext) : base(dbContext)
         {
         }
     }

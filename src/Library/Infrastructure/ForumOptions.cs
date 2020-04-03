@@ -7,6 +7,12 @@ namespace NetModular.Module.Forum.Infrastructure
     /// </summary>
     public class ForumOptions : IModuleOptions
     {
+        public IModuleOptions Copy()
+        {
+            return new ForumOptions
+            {
 
+            };
+        }
     }
 }

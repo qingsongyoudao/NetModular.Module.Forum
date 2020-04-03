@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 using NetModular.Lib.Data.Abstractions;
 using NetModular.Lib.Data.Core;
 using NetModular.Lib.Data.Query;
+using NetModular.Module.Forum.Domain.Member;
 using NetModular.Module.Forum.Domain.Tag;
 using NetModular.Module.Forum.Domain.Topic;
 using NetModular.Module.Forum.Domain.TopicTag;
 using NetModular.Module.Forum.Domain.TopicTag.Models;
-using NetModular.Module.Forum.Domain.User;
 
 namespace NetModular.Module.Forum.Infrastructure.Repositories.SqlServer
 {
@@ -42,7 +42,7 @@ namespace NetModular.Module.Forum.Infrastructure.Repositories.SqlServer
             var query = Db.Find();
             var joinQuery = query.LeftJoin<TopicEntity>((t1, t2) => t1.TopicId == t2.Id)
                 .LeftJoin<TagEntity>((t1, t2, t3) => t1.TagId == t3.Id)
-                .LeftJoin<UserEntity>((t1, t2, t3, t4) => t2.UserId == t4.Id);
+                .LeftJoin<MemberEntity>((t1, t2, t3, t4) => t2.UserId == t4.Id);
 
             joinQuery.Where((t1, t2, t3, t4) => t1.TopicId == model.TopicId);
 
