@@ -1,8 +1,6 @@
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using NetModular.Lib.Utils.Core.Result;
 using NetModular.Module.Forum.Application.TopicService.ViewModels;
 using NetModular.Module.Forum.Domain.Category;
 using NetModular.Module.Forum.Domain.Tag;

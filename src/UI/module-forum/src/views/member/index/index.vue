@@ -34,7 +34,7 @@ import page from './page'
 import cols from './cols'
 import SavePage from '../components/save'
 
-const api = $api.forum.user
+const api = $api.forum.member
 
 export default {
   name: page.name,

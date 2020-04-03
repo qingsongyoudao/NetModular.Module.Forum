@@ -1,6 +1,4 @@
-using System;
 using System.ComponentModel.DataAnnotations;
-using NetModular.Module.Forum.Domain.Topic;
 
 namespace NetModular.Module.Forum.Application.TopicService.ViewModels
 {

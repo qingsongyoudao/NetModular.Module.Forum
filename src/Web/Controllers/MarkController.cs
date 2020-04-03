@@ -1,9 +1,7 @@
-using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using NetModular.Lib.Utils.Core.Result;
 using NetModular.Module.Forum.Application.MarkService;
 using NetModular.Module.Forum.Application.MarkService.ViewModels;
 using NetModular.Module.Forum.Domain.Mark.Models;

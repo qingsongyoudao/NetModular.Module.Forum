@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using NetModular.Lib.Data.Abstractions;
 using NetModular.Lib.Data.Core;
 using NetModular.Lib.Data.Query;
-using NetModular.Lib.Utils.Core.Extensions;
 using NetModular.Module.Forum.Domain.Mark;
 using NetModular.Module.Forum.Domain.Mark.Models;
 using NetModular.Module.Forum.Domain.Member;

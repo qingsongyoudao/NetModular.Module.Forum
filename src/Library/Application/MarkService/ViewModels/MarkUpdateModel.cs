@@ -1,6 +1,4 @@
-using System;
 using System.ComponentModel.DataAnnotations;
-using NetModular.Module.Forum.Domain.Mark;
 
 namespace NetModular.Module.Forum.Application.MarkService.ViewModels
 {

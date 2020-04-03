@@ -1,4 +1,3 @@
-using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace NetModular.Module.Forum.Application.MemberService.ViewModels

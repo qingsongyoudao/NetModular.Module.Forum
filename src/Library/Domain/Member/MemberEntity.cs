@@ -1,4 +1,3 @@
-using System;
 using NetModular.Lib.Data.Abstractions.Attributes;
 using NetModular.Lib.Data.Core.Entities;
 
@@ -10,6 +9,16 @@ namespace NetModular.Module.Forum.Domain.Member
     [Table("Member")]
     public partial class MemberEntity : Entity<int>
     {
+        /// <summary>
+        /// 用户名
+        /// </summary>
+        public string UserName { get; set; }
+
+        /// <summary>
+        /// 密码
+        /// </summary>
+        public string Password { get; set; }
+
         /// <summary>
         /// 昵称
         /// </summary>
@@ -31,6 +40,5 @@ namespace NetModular.Module.Forum.Domain.Member
         /// </summary>
         [Length(300)]
         public string Email { get; set; }
-
     }
 }

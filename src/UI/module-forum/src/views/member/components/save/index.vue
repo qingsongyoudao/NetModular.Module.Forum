@@ -21,7 +21,7 @@
 <script>
 import { mixins } from 'netmodular-ui'
 
-const { add, edit, update } = $api.forum.user
+const { add, edit, update } = $api.forum.member
 
 export default {
   mixins: [mixins.formSave],

@@ -1,12 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using NetModular.Lib.Cache.Abstractions;
 using NetModular.Lib.Utils.Core.Models;
-using NetModular.Lib.Utils.Core.Result;
-using NetModular.Module.Forum.Application.CategoryService.ResultModels;
 using NetModular.Module.Forum.Application.CategoryService.ViewModels;
 using NetModular.Module.Forum.Domain.Category;
 using NetModular.Module.Forum.Domain.Category.Models;

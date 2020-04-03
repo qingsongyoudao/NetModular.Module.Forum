@@ -1,7 +1,3 @@
-using System;
-using System.ComponentModel.DataAnnotations;
-using NetModular.Module.Forum.Domain.Category;
-
 namespace NetModular.Module.Forum.Application.CategoryService.ViewModels
 {
     /// <summary>
