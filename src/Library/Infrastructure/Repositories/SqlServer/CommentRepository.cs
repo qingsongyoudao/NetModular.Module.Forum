@@ -6,7 +6,6 @@ using NetModular.Lib.Data.Core;
 using NetModular.Lib.Data.Query;
 using NetModular.Module.Forum.Domain.Comment;
 using NetModular.Module.Forum.Domain.Comment.Models;
-using NetModular.Module.Forum.Domain.Tag;
 using NetModular.Module.Forum.Domain.Topic;
 using NetModular.Module.Forum.Domain.User;
 

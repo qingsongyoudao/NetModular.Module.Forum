@@ -1,8 +1,5 @@
-using System;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using NetModular.Lib.Utils.Core.Result;
 using NetModular.Module.Forum.Application.UserService.ViewModels;
 using NetModular.Module.Forum.Domain.User;
 using NetModular.Module.Forum.Domain.User.Models;

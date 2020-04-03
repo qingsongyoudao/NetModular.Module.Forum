@@ -1,6 +1,4 @@
 using System;
-using System.ComponentModel.DataAnnotations;
-using NetModular.Module.Forum.Domain.Comment;
 
 namespace NetModular.Module.Forum.Application.CommentService.ViewModels
 {

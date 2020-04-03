@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+﻿using System.ComponentModel;
 
 namespace NetModular.Module.Forum.Infrastructure
 {
@@ -13,5 +10,14 @@ namespace NetModular.Module.Forum.Infrastructure
         [Description("分类")]
         public const string CategorySelect = "FORUM:CATEGORY:SELECT";
 
+        /// <summary>
+        /// 用户邮箱集合
+        /// </summary>
+        public const string USER_EMAIL = "FORU:USER:EMAIL";
+
+        /// <summary>
+        /// 用户名集合
+        /// </summary>
+        public const string USER_USER_NAME = "FORU:USER:USER_NAME";
     }
 }

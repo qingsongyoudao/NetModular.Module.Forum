@@ -1,7 +1,3 @@
-using System;
-using System.ComponentModel.DataAnnotations;
-using NetModular.Module.Forum.Domain.User;
-
 namespace NetModular.Module.Forum.Application.UserService.ViewModels
 {
     /// <summary>
@@ -18,6 +14,5 @@ namespace NetModular.Module.Forum.Application.UserService.ViewModels
         /// 性别
         /// </summary>
         public int Password { get; set; }
-
     }
 }

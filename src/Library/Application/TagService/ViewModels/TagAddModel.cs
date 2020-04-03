@@ -1,7 +1,3 @@
-using System;
-using System.ComponentModel.DataAnnotations;
-using NetModular.Module.Forum.Domain.Tag;
-
 namespace NetModular.Module.Forum.Application.TagService.ViewModels
 {
     /// <summary>

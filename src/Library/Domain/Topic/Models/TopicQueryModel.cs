@@ -1,4 +1,3 @@
-using System;
 using NetModular.Lib.Data.Query;
 
 namespace  NetModular.Module.Forum.Domain.Topic.Models
@@ -7,7 +6,7 @@ namespace  NetModular.Module.Forum.Domain.Topic.Models
     {
 
         /// <summary>
-        /// ÓÃ»§±àºÅ
+        /// ï¿½Ã»ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         public int? UserId { get; set; }
     }

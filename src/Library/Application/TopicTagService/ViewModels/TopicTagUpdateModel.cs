@@ -1,6 +1,4 @@
-using System;
 using System.ComponentModel.DataAnnotations;
-using NetModular.Module.Forum.Domain.TopicTag;
 
 namespace NetModular.Module.Forum.Application.TopicTagService.ViewModels
 {

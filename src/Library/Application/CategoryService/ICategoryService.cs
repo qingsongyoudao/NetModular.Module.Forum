@@ -1,7 +1,5 @@
-using System;
 using System.Threading.Tasks;
 using NetModular.Lib.Utils.Core.Models;
-using NetModular.Lib.Utils.Core.Result;
 using NetModular.Module.Forum.Application.CategoryService.ViewModels;
 using NetModular.Module.Forum.Domain.Category.Models;
 
