@@ -27,6 +27,7 @@ namespace NetModular.Module.Forum.Web.Controllers.App
             _service = service;
             _loginHandler = loginHandler;
         }
+
         [HttpGet]
         [AllowAnonymous]
         [DisableAuditing]
@@ -42,24 +43,18 @@ namespace NetModular.Module.Forum.Web.Controllers.App
         [Description("登录")]
         public async Task<IResultModel> Login([FromBody]LoginModel model)
         {
-            var result = await _service.Login(model);
-            //if (result.Successful)
-            //{
-            //    var account = result.Data.Account;
-            //    var loginInfo = result.Data.AuthInfo;
-            //    var claims = new[]
-            //    {
-            //        new Claim(ClaimsName.AccountId, account.Id.ToString()),
-            //        new Claim(ClaimsName.AccountName, account.Name),
-            //        new Claim(ClaimsName.AccountType, model.AccountType.ToInt().ToString()),
-            //        new Claim(ClaimsName.Platform, model.Platform.ToInt().ToString()),
-            //        new Claim(ClaimsName.LoginTime, loginInfo.LoginTime.ToString())
-            //    };
-
-            //    return _loginHandler.Hand(claims, loginInfo.RefreshToken);
-            //}
-            return ResultModel.Failed(result.Msg);
+            return await _service.Login(model);
         }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [DisableAuditing]
+        [Description("注册")]
+        public async Task<IResultModel> Register([FromBody]RegisterModel model)
+        {
+            return await _service.Register(model);
+        }
+
 
         [HttpGet]
         [AllowAnonymous]
@@ -67,24 +62,6 @@ namespace NetModular.Module.Forum.Web.Controllers.App
         [Description("刷新令牌")]
         public async Task<IResultModel> RefreshToken([BindRequired]string refreshToken)
         {
-            //var result = await _service.RefreshToken(refreshToken);
-            //if (result.Successful)
-            //{
-            //    var account = result.Data.Account;
-            //    var loginInfo = result.Data.AuthInfo;
-            //    var claims = new[]
-            //    {
-            //        new Claim(ClaimsName.AccountId, account.Id.ToString()),
-            //        new Claim(ClaimsName.AccountName, account.Name),
-            //        new Claim(ClaimsName.AccountType, account.Type.ToInt().ToString()),
-            //        new Claim(ClaimsName.Platform, loginInfo.Platform.ToInt().ToString()),
-            //        new Claim(ClaimsName.LoginTime, loginInfo.LoginTime.ToString())
-            //    };
-
-            //    return _loginHandler.Hand(claims, loginInfo.RefreshToken);
-            //}
-
-            //return ResultModel.Failed(result.Msg);
             return await Task.FromResult(ResultModel.Failed());
         }
     }

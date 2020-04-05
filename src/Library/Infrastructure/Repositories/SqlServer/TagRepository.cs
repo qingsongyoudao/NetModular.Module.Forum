@@ -31,12 +31,6 @@ namespace NetModular.Module.Forum.Infrastructure.Repositories.SqlServer
             }
             return true;
 
-            //不支持写法（等待支持）
-            //return await Db.Find(f => tagIds.Contains(f.Id)).UseUow(uow).UpdateAsync(m => new TagEntity
-            //{
-            //    Count = m.Count + 1
-            //});
-
             //采用sql写法
             //string tagDatabaseName = EntityDescriptorCollection.Get<TagEntity>().Database;
             //string addCountSql = $"update {tagDatabaseName}tag set Count=Count+1 where id in ({string.Join(",", tagIds)})";

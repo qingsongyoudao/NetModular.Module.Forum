@@ -23,7 +23,7 @@ namespace NetModular.Module.Forum.Domain.Mark
         /// <summary>
         /// 用户Id
         /// </summary>
-        public int UserId { get; set; }
+        public int MemberId { get; set; }
 
         /// <summary>
         /// 创建时间

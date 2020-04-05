@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using NetModular.Module.Forum.Application.AuthService.ViewModels;
+using NetModular.Module.Forum.Domain.Member;
 
 namespace NetModular.Module.Forum.Application.AuthService
 {
@@ -28,5 +29,19 @@ namespace NetModular.Module.Forum.Application.AuthService
         /// <param name="model"></param>
         /// <returns></returns>
         Task<IResultModel> ChangePassword(ChangePasswordModel model);
+
+        /// <summary>
+        /// 检查邮箱是否
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        Task<IResultModel> CheckEmail(string email);
+
+        /// <summary>
+        /// 检查用户名是否存在
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        Task<IResultModel> CheckUserName(string userName);
     }
 }

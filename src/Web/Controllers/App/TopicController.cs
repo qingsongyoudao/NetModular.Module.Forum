@@ -24,15 +24,15 @@ namespace NetModular.Module.Forum.Web.Controllers.App
         }
 
         [HttpGet]
-        [Description("查询列表")]
-        public Task<IResultModel> Query([FromQuery]TopicQueryModel model)
+        [Description("主题列表")]
+        public Task<IResultModel> List([FromQuery]TopicQueryModel model)
         {
             return _service.Query(model);
         }
 
         [HttpGet]
-        [Description("通过编号获取详细记录")]
-        public Task<IResultModel> GetById([BindRequired]int id)
+        [Description("通过编号获取详细记录，包括标签")]
+        public Task<IResultModel> GetTopicById([BindRequired]int id)
         {
             return _service.Edit(id);
         }

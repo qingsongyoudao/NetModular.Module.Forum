@@ -19,19 +19,11 @@ namespace NetModular.Module.Forum.Infrastructure.Repositories.SqlServer
         }
         public async Task<bool> DeleteByTopicId(int topicId, IUnitOfWork uow = null)
         {
-            if (uow == null)
-            {
-                return await Db.Find(m => m.TopicId == topicId).DeleteAsync();
-            }
             return await Db.Find(m => m.TopicId == topicId).UseUow(uow).DeleteAsync();
         }
 
         public async Task<bool> DeleteByTagId(int tagId, IUnitOfWork uow = null)
         {
-            if (uow == null)
-            {
-                return await Db.Find(m => m.TagId == tagId).DeleteAsync();
-            }
             return await Db.Find(m => m.TagId == tagId).UseUow(uow).DeleteAsync();
         }
 
@@ -42,7 +34,7 @@ namespace NetModular.Module.Forum.Infrastructure.Repositories.SqlServer
             var query = Db.Find();
             var joinQuery = query.LeftJoin<TopicEntity>((t1, t2) => t1.TopicId == t2.Id)
                 .LeftJoin<TagEntity>((t1, t2, t3) => t1.TagId == t3.Id)
-                .LeftJoin<MemberEntity>((t1, t2, t3, t4) => t2.UserId == t4.Id);
+                .LeftJoin<MemberEntity>((t1, t2, t3, t4) => t2.MemberId == t4.Id);
 
             joinQuery.Where((t1, t2, t3, t4) => t1.TopicId == model.TopicId);
 

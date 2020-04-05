@@ -7,6 +7,8 @@ namespace NetModular.Module.Forum.Application.AuthService.ViewModels
     /// </summary>
     public class ChangePasswordModel
     {
+        public int MemberId { get; set; }
+
         /// <summary>
         /// 旧密码
         /// </summary>

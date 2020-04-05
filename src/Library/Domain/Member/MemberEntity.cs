@@ -1,5 +1,7 @@
 using NetModular.Lib.Data.Abstractions.Attributes;
 using NetModular.Lib.Data.Core.Entities;
+using NetModular.Lib.Data.Core.Entities.Extend;
+using System;
 
 namespace NetModular.Module.Forum.Domain.Member
 {
@@ -7,7 +9,7 @@ namespace NetModular.Module.Forum.Domain.Member
     /// 用户信息
     /// </summary>
     [Table("Member")]
-    public partial class MemberEntity : Entity<int>
+    public partial class MemberEntity : EntityBaseWithSoftDelete<int, Guid>
     {
         /// <summary>
         /// 用户名

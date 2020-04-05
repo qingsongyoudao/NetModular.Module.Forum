@@ -23,10 +23,12 @@ namespace NetModular.Module.Forum.Infrastructure.Repositories.SqlServer
 
             var query = Db.Find();
 
-            var joinQuery = query.LeftJoin<MemberEntity>((t1, t2) => t1.UserId == t2.Id)
+            var joinQuery = query.LeftJoin<MemberEntity>((t1, t2) => t1.MemberId == t2.Id)
                 .LeftJoin<CategoryEntity>((t1, t2, t3) => t1.CategoryId == t3.Id);
 
-            joinQuery.WhereNotNull(model.UserId, (t1, t2, t3) => t1.UserId == model.UserId);
+            joinQuery.WhereNotNull(model.CategoryId, (t1, t2, t3) => t1.CategoryId == model.CategoryId);
+            joinQuery.WhereNotNull(model.Title, (t1, t2, t3) => t1.Title.Contains(model.Title));
+            joinQuery.WhereNotNull(model.MemberId, (t1, t2, t3) => t1.MemberId == model.MemberId);
 
             if (!paging.OrderBy.Any())
             {

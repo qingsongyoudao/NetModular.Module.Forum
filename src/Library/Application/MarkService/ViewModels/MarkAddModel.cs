@@ -21,7 +21,7 @@ namespace NetModular.Module.Forum.Application.MarkService.ViewModels
         /// <summary>
         /// 用户Id
         /// </summary>
-        public int UserId { get; set; }
+        public int MemberId { get; set; }
 
         /// <summary>
         /// 创建时间

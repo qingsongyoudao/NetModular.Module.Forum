@@ -36,7 +36,12 @@ namespace NetModular.Module.Forum.Infrastructure.Repositories.SqlServer
             //return await Db.ExecuteAsync(addCountSql, uow);
         }
 
-
+        /// <summary>
+        /// 重现运算逻辑 （用目前ORM写不出来)
+        /// </summary>
+        /// <param name="categoryIds"></param>
+        /// <param name="uow"></param>
+        /// <returns></returns>
         public async Task<int> RecalculationCount(int[] categoryIds, IUnitOfWork uow = null)
         {
             string databaseName = EntityDescriptorCollection.Get<CategoryEntity>().Database;

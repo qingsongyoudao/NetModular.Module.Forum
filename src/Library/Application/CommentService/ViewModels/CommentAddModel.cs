@@ -15,7 +15,7 @@ namespace NetModular.Module.Forum.Application.CommentService.ViewModels
         /// <summary>
         /// 用户编号
         /// </summary>
-        public int UserId { get; set; }
+        public int MemberId { get; set; }
 
         /// <summary>
         /// 回复人ID
@@ -28,29 +28,13 @@ namespace NetModular.Module.Forum.Application.CommentService.ViewModels
         public string Content { get; set; }
 
         /// <summary>
-        /// 赞数
-        /// </summary>
-        public int UpCount { get; set; }
-
-        /// <summary>
-        /// 踩数
-        /// </summary>
-        public int DownCount { get; set; }
-
-        /// <summary>
-        /// 喜欢数
-        /// </summary>
-        public int LikeCount { get; set; }
-
-        /// <summary>
-        /// 回复时间
-        /// </summary>
-        public DateTime CreatedTime { get; set; }
-
-        /// <summary>
         /// 创建IP
         /// </summary>
         public string CreatedIP { get; set; }
 
+        /// <summary>
+        /// 匿名
+        /// </summary>
+        public bool Anonymous { get; set; } = false;
     }
 }

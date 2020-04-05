@@ -18,7 +18,7 @@ namespace NetModular.Module.Forum.Domain.Comment
         /// <summary>
         /// 用户编号
         /// </summary>
-        public int UserId { get; set; }
+        public int MemberId { get; set; }
 
         /// <summary>
         /// 回复人ID

@@ -34,5 +34,10 @@ namespace NetModular.Module.Forum.Application.AuthService.ViewModels
         [MinLength(6, ErrorMessage = "密码不能小于10位")]
         [MaxLength(50, ErrorMessage = "用户名不能大于50位")]
         public string Password { get; set; }
+
+        /// <summary>
+        /// 性别
+        /// </summary>
+        public int Sex { get; set; } = 0;
     }
 }

@@ -15,6 +15,21 @@ namespace NetModular.Module.Forum.Infrastructure.Repositories.SqlServer
         {
         }
 
+        public bool ExistsEmail(string email)
+        {
+            return Db.Find().Where(w => w.Email == email).Exists();
+        }
+
+        public bool ExistsUserName(string userName)
+        {
+            return Db.Find().Where(w => w.UserName == userName).Exists();
+        }
+
+        public Task<MemberEntity> GetByUserName(string userName)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public async Task<IList<MemberEntity>> Query(MemberQueryModel model)
         {
             var paging = model.Paging();

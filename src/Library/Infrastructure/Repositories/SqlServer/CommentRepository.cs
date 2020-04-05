@@ -25,10 +25,10 @@ namespace NetModular.Module.Forum.Infrastructure.Repositories.SqlServer
             var query = Db.Find();
             var joinQuery = query.LeftJoin<TopicEntity>((t1, t2) => t1.TopicId == t2.Id)
                 .LeftJoin<MemberEntity>((t1, t2, t3) => t1.To == t3.Id)
-                .LeftJoin<MemberEntity>((t1, t2, t3, t4) => t2.UserId == t4.Id);
+                .LeftJoin<MemberEntity>((t1, t2, t3, t4) => t2.MemberId == t4.Id);
 
             joinQuery.WhereNotNull(model.TopicId, (t1, t2, t3, t4) => t1.TopicId == model.TopicId);
-            joinQuery.WhereNotNull(model.UserId, (t1, t2, t3, t4) => t1.UserId == model.UserId);
+            joinQuery.WhereNotNull(model.MemberId, (t1, t2, t3, t4) => t1.MemberId == model.MemberId);
             joinQuery.WhereNotNull(model.To, (t1, t2, t3, t4) => t1.To == model.To);
 
             if (!paging.OrderBy.Any())

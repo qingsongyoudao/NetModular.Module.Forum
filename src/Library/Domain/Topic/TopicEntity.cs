@@ -13,7 +13,7 @@ namespace NetModular.Module.Forum.Domain.Topic
         /// <summary>
         /// 用户ID
         /// </summary>
-        public int UserId { get; set; }
+        public int MemberId { get; set; }
 
         /// <summary>
         /// 标题

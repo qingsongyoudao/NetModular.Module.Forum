@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using NetModular.Lib.Utils.Core.Result;
 using NetModular.Module.Forum.Application.MemberService;
 using NetModular.Module.Forum.Application.MemberService.ViewModels;
@@ -20,9 +21,11 @@ namespace NetModular.Module.Forum.Web.Controllers.App
             _service = service;
         }
 
-
-
-
-
+        [HttpGet]
+        [Description("获取会员信息")]
+        public Task<IResultModel> GetMemberInfo([BindRequired]int id)
+        {
+            return _service.Edit(id);
+        }
     }
 }

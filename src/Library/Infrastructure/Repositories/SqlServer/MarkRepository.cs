@@ -28,7 +28,7 @@ namespace NetModular.Module.Forum.Infrastructure.Repositories.SqlServer
 
             var query = Db.Find();
             var joinQuery = query.LeftJoin<TopicEntity>((t1, t2) => t1.TopicId == t2.Id)
-                .LeftJoin<MemberEntity>((t1, t2, t3) => t1.UserId == t3.Id);
+                .LeftJoin<MemberEntity>((t1, t2, t3) => t1.MemberId == t3.Id);
 
             joinQuery.Where((t1, t2, t3) => t1.TopicId == model.TopicId);
             joinQuery.WhereNotNull(model.Type, (t1, t2, t3) => t1.Type == model.Type);

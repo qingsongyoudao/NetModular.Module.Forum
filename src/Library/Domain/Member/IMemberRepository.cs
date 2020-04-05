@@ -17,5 +17,11 @@ namespace NetModular.Module.Forum.Domain.Member
         /// <param name="model"></param>
         /// <returns></returns>
         Task<IList<MemberEntity>> Query(MemberQueryModel model);
+
+        bool ExistsEmail(string email);
+
+        bool ExistsUserName(string userName);
+
+        Task<MemberEntity> GetByUserName(string userName);
     }
 }
