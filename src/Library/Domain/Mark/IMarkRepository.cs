@@ -20,9 +20,9 @@ namespace NetModular.Module.Forum.Domain.Mark
         /// <summary>
         /// 获取点赞和踩的总数
         /// </summary>
-        /// <param name="TopicId">主题ID</param>
+        /// <param name="RelationId">关联表编号</param>
         /// <param name="type">MarkType枚举</param>
         /// <returns></returns>
-        Task<long> Count(int TopicId, MarkType type);
+        Task<long> Count(int RelationId, MarkType type);
     }
 }

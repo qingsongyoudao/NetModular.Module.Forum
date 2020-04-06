@@ -8,16 +8,18 @@ namespace NetModular.Module.Forum.Infrastructure
         /// 分类树
         /// </summary>
         [Description("分类")]
-        public const string CategorySelect = "FORUM:CATEGORY:SELECT";
+        public const string CATEGORY_SELECT = "FORUM:CATEGORY:SELECT";
 
         /// <summary>
-        /// 用户邮箱集合
+        /// 会员邮箱集合
         /// </summary>
-        public const string USER_EMAIL = "FORU:USER:EMAIL";
+        [Description("会员邮箱集合")]
+        public const string USER_EMAIL = "FORUM:USER:EMAIL";
 
         /// <summary>
-        /// 用户名集合
+        /// 会员名集合
         /// </summary>
-        public const string USER_USER_NAME = "FORU:USER:USER_NAME";
+        [Description("会员名集合")]
+        public const string USER_USER_NAME = "FORUM:USER:USER_NAME";
     }
 }

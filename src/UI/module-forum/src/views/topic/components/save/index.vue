@@ -136,7 +136,6 @@ export default {
       if (this.isEdit_) {
         this.tab = 'topicTag'
         this.refresh()
-        //加载主题数据
         query({ topicId: this.form.model.id }).then(res => {
           this.tags = res.rows.map(m => {
             return { tagName: m.tagName, tagId: m.tagId, type: 'success' }

@@ -36,5 +36,25 @@ namespace NetModular.Module.Forum.Web.Controllers.App
             return _service.Add(model);
         }
 
+        [HttpGet]
+        [Description("添加赞一下")]
+        public Task<IResultModel> Up([BindRequired]int id)
+        {
+            return _service.AddUpCount(id);
+        }
+
+        [HttpGet]
+        [Description("添加踩一下")]
+        public Task<IResultModel> Down([BindRequired]int id)
+        {
+            return _service.AddDownCount(id);
+        }
+
+        [HttpGet]
+        [Description("添加喜欢一下")]
+        public Task<IResultModel> Like([BindRequired]int id)
+        {
+            return _service.AddLikeCount(id);
+        }
     }
 }

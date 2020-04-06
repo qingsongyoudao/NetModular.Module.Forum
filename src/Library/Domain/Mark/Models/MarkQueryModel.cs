@@ -7,7 +7,7 @@ namespace  NetModular.Module.Forum.Domain.Mark.Models
         /// <summary>
         /// 主题Id
         /// </summary>
-        public int TopicId { get; set; }
+        public int RelationId { get; set; }
         /// <summary>
         /// 类型
         /// </summary>

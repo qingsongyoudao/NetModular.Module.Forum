@@ -16,9 +16,9 @@ namespace NetModular.Module.Forum.Domain.Mark
         public MarkType Type { get; set; }
 
         /// <summary>
-        /// 主题Id
+        /// 关联编号
         /// </summary>
-        public int TopicId { get; set; }
+        public int RelationId { get; set; }
 
         /// <summary>
         /// 用户Id

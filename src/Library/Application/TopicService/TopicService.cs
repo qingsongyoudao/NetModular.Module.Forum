@@ -89,6 +89,7 @@ namespace NetModular.Module.Forum.Application.TopicService
 
             var topicTags = await _topicTagRepository.Query(new Domain.TopicTag.Models.TopicTagQueryModel { TopicId = entity.Id });
             model.Tags = topicTags.ToList().Select(s => s.TagId).ToArray();
+
             return ResultModel.Success(model);
         }
 

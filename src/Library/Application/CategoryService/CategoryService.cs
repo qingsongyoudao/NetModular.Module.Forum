@@ -87,7 +87,7 @@ namespace NetModular.Module.Forum.Application.CategoryService
 
         public async Task<IResultModel> Select()
         {
-            if (!_cacheHandler.TryGetValue(CacheKeys.CategorySelect, out List<OptionResultModel> list))
+            if (!_cacheHandler.TryGetValue(CacheKeys.CATEGORY_SELECT, out List<OptionResultModel> list))
             {
                 var all = await _repository.GetAllAsync();
                 list = all.Select(m => new OptionResultModel
@@ -96,7 +96,7 @@ namespace NetModular.Module.Forum.Application.CategoryService
                     Value = m.Id
                 }).ToList();
 
-                await _cacheHandler.SetAsync(CacheKeys.CategorySelect, list);
+                await _cacheHandler.SetAsync(CacheKeys.CATEGORY_SELECT, list);
             }
 
             return ResultModel.Success(list);

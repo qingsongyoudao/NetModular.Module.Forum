@@ -1,27 +1,29 @@
+using System;
 using System.Threading.Tasks;
-using NetModular.Module.Forum.Application.CommentService.ViewModels;
-using NetModular.Module.Forum.Domain.Comment.Models;
+using NetModular.Lib.Utils.Core.Result;
+using NetModular.Module.Forum.Application.QuestionService.ViewModels;
+using NetModular.Module.Forum.Domain.Question.Models;
 
-namespace NetModular.Module.Forum.Application.CommentService
+namespace NetModular.Module.Forum.Application.QuestionService
 {
     /// <summary>
-    /// 评论信息服务
+    /// 问题管理服务
     /// </summary>
-    public interface ICommentService
+    public interface IQuestionService
     {
         /// <summary>
         /// 查询
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<IResultModel> Query(CommentQueryModel model);
+        Task<IResultModel> Query(QuestionQueryModel model);
 
         /// <summary>
         /// 创建
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<IResultModel> Add(CommentAddModel model);
+        Task<IResultModel> Add(QuestionAddModel model);
 
         /// <summary>
         /// 删除
@@ -42,9 +44,14 @@ namespace NetModular.Module.Forum.Application.CommentService
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<IResultModel> Update(CommentUpdateModel model);
+        Task<IResultModel> Update(QuestionUpdateModel model);
 
-
+        /// <summary>
+        /// 访问次数加一次
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task<IResultModel> AddVisitCount(int id);
         /// <summary>
         /// 赞加一
         /// </summary>
@@ -63,5 +70,11 @@ namespace NetModular.Module.Forum.Application.CommentService
         /// <param name="id"></param>
         /// <returns></returns>
         Task<IResultModel> AddLikeCount(int id);
+        /// <summary>
+        /// 回答加一
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task<IResultModel> AddAnswerCount(int id);
     }
 }

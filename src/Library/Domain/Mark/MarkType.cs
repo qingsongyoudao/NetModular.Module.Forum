@@ -7,12 +7,12 @@ namespace NetModular.Module.Forum.Domain.Mark
     /// </summary>
     public enum MarkType
     {
-        [Description("主题赞")]
-        TopicUp = 0,
-        [Description("主题踩")]
-        TopicDown = 1,
-        [Description("主题喜欢")]
-        TopicLike = 2,
+        [Description("问题赞")]
+        QuestionUp = 0,
+        [Description("问题踩")]
+        QuestionDown = 1,
+        [Description("问题喜欢")]
+        QuestionLike = 2,
         [Description("评论赞")]
         CommentUp = 3,
         [Description("评论踩")]

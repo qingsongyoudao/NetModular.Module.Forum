@@ -17,9 +17,9 @@ namespace NetModular.Module.Forum.Infrastructure.Repositories.SqlServer
         {
         }
 
-        public Task<long> Count(int TopicId, MarkType type)
+        public Task<long> Count(int RelationId, MarkType type)
         {
-            return Db.Find(m => m.TopicId == TopicId && m.Type == type).CountAsync();
+            return Db.Find(m => m.RelationId == RelationId && m.Type == type).CountAsync();
         }
 
         public async Task<IList<MarkEntity>> Query(MarkQueryModel model)
@@ -27,24 +27,22 @@ namespace NetModular.Module.Forum.Infrastructure.Repositories.SqlServer
             var paging = model.Paging();
 
             var query = Db.Find();
-            var joinQuery = query.LeftJoin<TopicEntity>((t1, t2) => t1.TopicId == t2.Id)
-                .LeftJoin<MemberEntity>((t1, t2, t3) => t1.MemberId == t3.Id);
+            var joinQuery = query.LeftJoin<MemberEntity>((t1, t2) => t1.MemberId == t2.Id);
 
-            joinQuery.Where((t1, t2, t3) => t1.TopicId == model.TopicId);
-            joinQuery.WhereNotNull(model.Type, (t1, t2, t3) => t1.Type == model.Type);
+            joinQuery.Where((t1, t2) => t1.RelationId == model.RelationId);
+            joinQuery.WhereNotNull(model.Type, (t1, t2) => t1.Type == model.Type);
 
             if (!paging.OrderBy.Any())
             {
-                joinQuery.OrderByDescending((t1, t2, t3) => t1.Id);
+                joinQuery.OrderByDescending((t1, t2) => t1.Id);
             }
 
-            joinQuery.Select((t1, t2, t3) => new
+            joinQuery.Select((t1, t2) => new
             {
                 t1,
-                TopicTitle = t2.Title,
-                t3.NickName,
-                t3.Avatar,
-                t3.Sex
+                t2.NickName,
+                t2.Avatar,
+                t2.Sex
             });
 
             var result = await joinQuery.PaginationAsync(paging);

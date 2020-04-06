@@ -18,6 +18,23 @@ namespace NetModular.Module.Forum.Infrastructure.Repositories.SqlServer
         {
         }
 
+        #region Õ≥º∆¿€º”
+        public async Task<bool> AddUpCount(int id)
+        {
+            return await Db.Find(m => m.Id == id).UpdateAsync(s => new CommentEntity { UpCount = s.UpCount + 1 });
+        }
+
+        public async Task<bool> AddDownCount(int id)
+        {
+            return await Db.Find(m => m.Id == id).UpdateAsync(s => new CommentEntity { DownCount = s.DownCount + 1 });
+        }
+        public async Task<bool> AddLikeCount(int id)
+        {
+            return await Db.Find(m => m.Id == id).UpdateAsync(s => new CommentEntity { LikeCount = s.LikeCount + 1 });
+        }
+        #endregion
+
+
         public async Task<IList<CommentEntity>> Query(CommentQueryModel model)
         {
             var paging = model.Paging();
