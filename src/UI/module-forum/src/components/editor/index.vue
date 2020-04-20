@@ -5,12 +5,6 @@
   <div class="ql-editor" v-else v-html="content"></div>
 </template>
 <script>
-import { Quill } from 'vue-quill-editor'
-import { ImageDrop } from 'quill-image-drop-module'
-import ImageResize from 'quill-image-resize-module'
-Quill.register('modules/imageDrop', ImageDrop)
-Quill.register('modules/imageResize', ImageResize)
-
 export default {
   name: 'myEditor',
   props: {

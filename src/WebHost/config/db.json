@@ -6,9 +6,9 @@
   //数据库版本
   "Version": "",
   //数据库地址
-  "Server": "",
+  "Server": "../../data/SQLite",
   //端口号
-  "Port": 3307,
+  "Port": 0,
   //用户名
   "UserId": "",
   //密码

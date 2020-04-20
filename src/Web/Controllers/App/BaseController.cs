@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using NetModular.Lib.Auth.Web;
 
 namespace NetModular.Module.Forum.Web.Controllers.App
 {
-    [Route("v1/[controller]/[action]")]
-    public abstract class BaseController : ControllerBase
+    public abstract class BaseController : ApiControllerAbstract
     {
-       
+
     }
 }

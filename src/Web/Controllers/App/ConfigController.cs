@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
+using NetModular.Lib.Config.Abstractions;
 
 namespace NetModular.Module.Forum.Web.Controllers.App
 {
@@ -18,20 +19,6 @@ namespace NetModular.Module.Forum.Web.Controllers.App
         public ConfigController(IConfigService  service)
         {
             _service = service;
-        }
-
-        [HttpGet]
-        [Description("根据Key获取值")]
-        [AllowAnonymous]
-        public async Task<IResultModel> GetValue(string key, ConfigType type = ConfigType.System, string moduleCode = null)
-        {
-            if (key.IsNull())
-                return ResultModel.Success(string.Empty);
-
-            if (type == ConfigType.Module && moduleCode.IsNull())
-                return ResultModel.Success(string.Empty);
-
-            return await _service.GetValueByKey(key, type, moduleCode);
         }
     }
 }

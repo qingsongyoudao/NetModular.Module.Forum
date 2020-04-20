@@ -1,0 +1,22 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'å¾®è½¯é›…é»‘', Arial, sans-serif;
+  background-color: #f8f9fa;
+}
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#app {
+  color: #2c3e50;
+  min-width: 1200px;
+}
+
+@import './transitions';
+@import './components/dropdown/';
+@import './components/icon/';

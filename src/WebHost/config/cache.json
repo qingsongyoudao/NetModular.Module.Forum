@@ -1,8 +1,0 @@
-{
-  // 0、MemoryCache 1、Redis
-  "Mode": 1,
-  "Redis": {
-    //"ConnectionString": "127.0.0.1:6379,defaultDatabase=1,password=xxxxx"
-    "ConnectionString": "127.0.0.1:6379"
-  }
-}
